@@ -1,5 +1,7 @@
 #Flickbook
 
+[![Build Status](https://travis-ci.org/dangreaves/flickbook.svg)](https://travis-ci.org/dangreaves/flickbook)
+
 An experiment in utilising the Flickr API without a third party abstraction library.
 
 ##Getting started
