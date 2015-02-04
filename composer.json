@@ -6,13 +6,16 @@
             "email": "dan@dangreaves.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
-        "klein/klein": "dev-master",
-        "pimple/pimple": "~3.0@dev",
-        "guzzlehttp/guzzle": "~5.0@dev",
-        "illuminate/support": "~5.1@dev",
-        "illuminate/pagination": "~5.1@dev"
+        "klein/klein": "~2.1",
+        "pimple/pimple": "~3.0",
+        "guzzlehttp/guzzle": "~5.2",
+        "illuminate/support": "~5.0",
+        "illuminate/pagination": "~5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.4"
     },
     "autoload": {
         "psr-4": {
