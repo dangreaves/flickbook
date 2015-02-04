@@ -1,5 +1,7 @@
 <?php namespace DanGreaves\Flickbook\Controllers;
 
+use DanGreaves\Flickbook\Flickr\Exceptions\ApiException;
+
 /**
  * Controller to manage search and detail actions.
  *
@@ -59,7 +61,11 @@ class SearchController extends Controller
 
         $api = $this->app->container['flickr.api'];
 
-        $photo = $api->getPhoto($id);
+        try {
+            $photo = $api->getPhoto($id);
+        } catch (ApiException $e) {
+            return $this->response->redirect('/');
+        }
 
         return $this->service->render(VIEWS_DIR . '/search/detail.php', [
             'photo' => $photo,

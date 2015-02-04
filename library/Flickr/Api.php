@@ -1,9 +1,11 @@
 <?php namespace DanGreaves\Flickbook\Flickr;
 
 use GuzzleHttp\Client;
-use DanGreaves\Flickbook\Flickr\Entities\Photo;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use DanGreaves\Flickbook\Flickr\Entities\Photo;
+use DanGreaves\Flickbook\Flickr\Exceptions\ApiException;
+use DanGreaves\Flickbook\Flickr\Exceptions\PhotoNotFoundException;
 
 /**
  * Abstraction for the Flickr API.
@@ -112,9 +114,20 @@ class Api
      */
     public function getPhoto($id)
     {
-        $response = $this->request('flickr.photos.getInfo', [
-            'photo_id' => $id
-        ]);
+        try {
+            $response = $this->request('flickr.photos.getInfo', [
+                'photo_id' => $id
+            ]);
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 1:
+                    throw new PhotoNotFoundException($e->getMessage(), $e->getCode());
+                    break;
+                default:
+                    throw $e;
+                    break;
+            }
+        }
 
         $p = $response->photo;
 
@@ -154,6 +167,12 @@ class Api
             'query' => $query
         ]);
 
-        return $response->json(['object' => true]);
+        $json = $response->json(['object' => true]);
+
+        if ('ok' != $json->stat) {
+            throw new ApiException($json->message, $json->code);
+        }
+
+        return $json;
     }
 }
