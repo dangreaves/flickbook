@@ -1,0 +1,22 @@
+{
+    "name": "dangreaves/flickbook",
+    "authors": [
+        {
+            "name": "Dan Greaves",
+            "email": "dan@dangreaves.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "klein/klein": "dev-master",
+        "pimple/pimple": "~3.0@dev",
+        "guzzlehttp/guzzle": "~5.0@dev",
+        "illuminate/support": "~5.1@dev",
+        "illuminate/pagination": "~5.1@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "DanGreaves\\Flickbook\\": "library"
+        }
+    }
+}

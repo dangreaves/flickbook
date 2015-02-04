@@ -1,0 +1,6 @@
+<?php
+
+return [
+    'flickr_key'    => 'CHANGE_ME',
+    'flickr_secret' => 'CHANGE_ME'
+];
