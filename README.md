@@ -13,4 +13,4 @@ An experiment in utilising the Flickr API without a third party abstraction libr
 
 - [ ] Add unit tests and setup with Travis CI
 - [ ] Handle Flickr HTTP exceptions
-- [ ] Gracefully handle Flickr API exceptions
+- [x] Handle Flickr API exceptions
