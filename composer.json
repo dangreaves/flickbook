@@ -12,7 +12,9 @@
         "pimple/pimple": "~3.0",
         "guzzlehttp/guzzle": "~5.2",
         "illuminate/support": "~5.0",
-        "illuminate/pagination": "~5.0"
+        "illuminate/pagination": "~5.0",
+        "aura/html": "~2.1",
+        "league/url": "~3.2"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.4"

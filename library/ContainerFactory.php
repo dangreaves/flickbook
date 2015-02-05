@@ -2,6 +2,7 @@
 
 use Pimple\Container;
 use DanGreaves\Flickbook\Flickr;
+use Aura\Html\HelperLocatorFactory;
 
 /**
  * Factory for generating a Pimple DI container instance.
@@ -26,6 +27,10 @@ class ContainerFactory
 
         $container['flickr.api'] = function ($c) {
             return new Flickr\Api($c['flickr_key'], $c['flickr_secret']);
+        };
+
+        $container['escaper'] = function ($c) {
+            return (new HelperLocatorFactory)->newInstance();
         };
 
         return $container;

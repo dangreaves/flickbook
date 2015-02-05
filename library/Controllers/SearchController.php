@@ -1,5 +1,6 @@
 <?php namespace DanGreaves\Flickbook\Controllers;
 
+use League\Url\Url;
 use DanGreaves\Flickbook\Flickr\Exceptions\ApiException;
 
 /**
@@ -67,10 +68,21 @@ class SearchController extends Controller
             return $this->response->redirect('/');
         }
 
+        if ($query) {
+            $back_url = Url::createFromUrl('http://flickbook.app/search');
+            $back_url->getQuery()['query'] = $query;
+            $back_url->getQuery()['page']  = $page;
+            $back_url = $back_url->getRelativeUrl();
+        } else {
+            $back_url = null;
+        }
+
+        //Initialise escaper statics
+        $this->app->container['escaper'];
+
         return $this->service->render(VIEWS_DIR . '/search/detail.php', [
-            'photo' => $photo,
-            'query' => $query,
-            'page'  => $page
+            'photo'    => $photo,
+            'back_url' => $back_url
         ]);
     }
 }
