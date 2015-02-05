@@ -182,8 +182,12 @@ body {
     padding: 20px;
 }
 
+.section > *:last-child {
+    margin-bottom: 0;
+}
+
 .section--bordered {
-    border-top: 1px dotted #cccccc;
+    border-bottom: 1px dotted #cccccc;
 }
 
 .section--grid {

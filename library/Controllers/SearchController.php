@@ -41,6 +41,9 @@ class SearchController extends Controller
 
         $results->setPath('/search/' . $query);
 
+        //Initialise escaper statics
+        $this->app->container['escaper'];
+
         return $this->service->render(VIEWS_DIR . '/search/results.php', [
             'results' => $results,
             'query'   => $query,

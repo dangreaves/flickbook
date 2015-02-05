@@ -1,14 +1,14 @@
 <?php use Aura\Html\Escaper as e; ?>
 <?= $this->render(VIEWS_DIR . '/partials/header.php', ['title' => $this->photo->getTitle()]) ?>
 <div class="page">
-    <section class="section navigation-section">
-        <?php if ($this->back_url): ?>
+    <?php if ($this->back_url): ?>
+        <section class="section navigation-section section--bordered">
             <nav class="navigation-section__left">
                 <a href="<?= $this->back_url ?>" class="button"><i class="fa fa-th-large"></i> Back to results</a>
             </nav>
-        <?php endif; ?>
-    </section>
-    <section class="section section--grid section--bordered">
+        </section>
+    <?php endif; ?>
+    <section class="section section--grid">
         <div class="grid">
             <div class="grid__col grid__col--padded l-one-half">
                 <figure class="image-full">
